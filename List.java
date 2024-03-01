@@ -101,7 +101,7 @@ public class List {
             prev = current;
             current = current.next;
         }
-        if (current == null) return false; //not found
+        if (current == null) return false; 
         if (prev == null) {
             first = first.next;
         } else {
@@ -117,7 +117,7 @@ public class List {
     public CharData get(int index) {
         // Your code goes here
         Node current = first;
-        if (index < 0 || index >= size) {
+        if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException();
         }
         for (int i = 0 ; i < index ; i++) {

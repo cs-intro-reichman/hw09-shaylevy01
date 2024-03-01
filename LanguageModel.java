@@ -52,7 +52,7 @@ public class LanguageModel {
             }
             probs.update(c);
             window = window + c;
-            window.substring(1);
+            window = window.substring(1);
         }
         for (List probs : CharDataMap.values()) {
             calculateProbabilities(probs);
@@ -74,7 +74,7 @@ public class LanguageModel {
         while (current != null) {
             current.cp.p = current.cp.count / n;
             current.cp.cp = cp + current.cp.p;
-            cp = current.cp.cp + cp;
+            cp = cp + current.cp.cp;
             current = current.next;
         }
 	}
@@ -90,7 +90,7 @@ public class LanguageModel {
             }
             current = current.next;
         }
-        return 0;
+        return ' ';
 	}
 
     /**
