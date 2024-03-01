@@ -64,17 +64,19 @@ public class LanguageModel {
 	public void calculateProbabilities(List probs) {				
 		// Your code goes heregg
         Node current = probs.getFirstNode();
-        int n = 0;
+        double n = 0.0;
+        double p = 0.0;
+        double cp = 0.0;
         while (current != null) {
             n = n + current.cp.count;
             current = current.next;
         }
-        current =  probs.getFirstNode();
-        double cp = 0;
+        current = probs.getFirstNode();
         while (current != null) {
-            current.cp.p = current.cp.count / n;
-            current.cp.cp = cp + current.cp.p;
-            cp = cp + current.cp.cp;
+            p = current.cp.count / n;
+            cp = cp + p;
+            current.cp.p = p;
+            current.cp.cp = cp;
             current = current.next;
         }
 	}
