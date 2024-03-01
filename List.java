@@ -48,7 +48,7 @@ public class List {
         String str = "(";
         Node current = first;
         while (current != null) {
-            str += current.cp.toString() + " ";
+            str = str + current.cp.toString() + " ";
             current = current.next;
         }
         return str.substring(0,str.length()-1)+")";
@@ -62,7 +62,7 @@ public class List {
         Node current = first;
         int index = 0;
         while (current != null) {
-            if (current.cp.chr == chr) {
+            if (current.cp.equals(chr)) {
                 return index;
             }
             current = current.next;
@@ -79,7 +79,7 @@ public class List {
         Node current = first;
         boolean increments = false;
         while (current != null) {
-            if (current.cp.chr == chr) {
+            if (current.cp.equals(chr)) {
                 current.cp.count++;
                 increments = true;
             }
@@ -97,15 +97,14 @@ public class List {
         // Your code goes here
         Node prev = null;
         Node current = first;
-        while (current != null && current.cp.chr != chr) {
+        while (current != null && !current.cp.equals(chr)) {
             prev = current;
             current = current.next;
         }
         if (current == null) return false; //not found
         if (prev == null) {
             first = first.next;
-        } 
-        else {
+        } else {
             prev.next = current.next;
         }
         size--;
@@ -118,17 +117,13 @@ public class List {
     public CharData get(int index) {
         // Your code goes here
         Node current = first;
-        int index2 = 0;
-        while (current != null){
-            if (index == index2) {
-                return current.cp;
-            }
-            else {
-                index2++;
-            }
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+        for (int i = 0 ; i < index ; i++) {
             current = current.next;
         }
-        throw new IndexOutOfBoundsException();
+        return current.cp;
     }
 
     /** Returns an array of CharData objects, containing all the CharData objects in this list. */
