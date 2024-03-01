@@ -34,7 +34,6 @@ public class List {
 
     /** GIVE Adds a CharData object with the given character to the beginning of this list. */
     public void addFirst(char chr) {
-        // Your code goes here
         Node newNode = new Node(new CharData(chr));
         newNode.next = first;
         first = newNode;
@@ -43,7 +42,6 @@ public class List {
     
     /** GIVE Textual representation of this list. */
     public String toString() {
-        // Your code goes here
         if (size == 0) return "()";
         String str = "(";
         Node current = first;
@@ -58,7 +56,6 @@ public class List {
      *  that has the same chr value as the given char,
      *  or -1 if there is no such object in this list. */
     public int indexOf(char chr) {
-        // Your code goes here
         Node current = first;
         int index = 0;
         while (current != null) {
@@ -75,7 +72,6 @@ public class List {
      *  increments its counter. Otherwise, adds a new CharData object with the
      *  given chr to the beginning of this list. */
     public void update(char chr) {
-        // Your code goes here
         Node current = first;
         boolean increments = false;
         while (current != null) {
@@ -94,7 +90,6 @@ public class List {
      *  in this list, removes this CharData object from the list and returns
      *  true. Otherwise, returns false. */
     public boolean remove(char chr) {
-        // Your code goes here
         Node prev = null;
         Node current = first;
         while (current != null && !current.cp.equals(chr)) {
@@ -115,7 +110,6 @@ public class List {
      *  If the index is negative or is greater than the size of this list, 
      *  throws an IndexOutOfBoundsException. */
     public CharData get(int index) {
-        // Your code goes here
         Node current = first;
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException();
